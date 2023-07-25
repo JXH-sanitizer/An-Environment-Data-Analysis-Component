@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相关性分析</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        .excel {
+            margin: 0 auto;
+            max-width: 500px;
+            padding: 20px;
+            border: 1px solid #000000;
+            border-radius: 4px;
+            background-color: #ffffff;
+        }
+        input[type="file"] {
+            margin-top: 10px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">导航</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">主页</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">简介</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  上传数据或文件
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{{ url_for('file.upload' ) }}">Excel表格上传</a></li>
+                  <li><a class="dropdown-item" href="{{ url_for('pol.register' ) }}">污染物登记</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">其他</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="请输入关键词" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">搜索</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <h1>统计分析模块,包括相关性分析、主成分分析和聚类分析</h1>
+    <h5 style="text-align: center;">请上传您的污染物文件,以.xls或.xlsx格式上传</h5>
+    <h5 style="text-align: center;">表格文件请以以下形式给出,第一列为序列,第二列及后为数据格式,第一行为污染物名称,第二行及后为各监测点位监测值,如下示例</h5>
+    <div style="text-align: center;">
+        <img src="../../static/images/example.png" alt="" width="500px" height="250px">
+    </div>
+    <br>
+    <form class="excel" enctype="multipart/form-data" method="post">
+        <input type="file" name="file">
+        <input type="submit" value="上传">
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>展示</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+    table {
+        text-align: center;
+        border-collapse: collapse;
+        border: 2px solid black;
+      }
+      th, td {
+        text-align: center;
+        padding: 5px;
+        border: 1px solid black;
+        width: 175px;
+        font-size: 16px;
+      }
+      th {
+        background-color: lightgrey;
+      }
+      </style>
+      <script>
+        alert("文件上传成功")
+      </script>
+</head>
+<body>
+    <h1 style="color: red;">基础数据分析展示</h1>
+    <h4>展示数据表的前五条数据</h4>
+    <table class="table table-striped">
+        {{pol | safe}}
+    </table>
+
+    <div style="position: absolute;width: 500px;height: 800px;left:0px;margin-top: 30px;">
+        <a href="{{url_for('static',filename='images/heatmap2.jpg')}}" download>
+            <p style="font-size: 25px;text-align:center;font-weight: bolder;">
+            相关性分析 <span class="glyphicon glyphicon-save-file" aria-hidden="true" style="font-size: 0.9em;"></span>
+            </p>
+        </a>
+        <hr style="border-width: 5px;border: solid black;">
+        <img src="{{url_for('static',filename='images/heatmap2.jpg')}}" alt="Image" width="500px" height="500px">
+    </div>
+    <div style="position: absolute;width: 500px;height: 800px;left: 700px;margin-top: 30px;">
+        <a href="{{url_for('static',filename='images/bubbles.jpg')}}" download>
+            <p style="font-size: 25px;text-align: center;font-weight: bolder;">
+            主成分分析 <span class="glyphicon glyphicon-save-file" aria-hidden="true" style="font-size: 0.9em;"></span>
+            </p>
+        </a>
+        <hr style="border-width: 5px;border: solid black;">
+        <img src="{{url_for('static',filename='images/bubbles.jpg')}}" alt="Image" width="500px" height="500px">
+    </div>  
+    <div style="position: absolute;width: 500px;height: 800px;left: 1400px; margin-top: 30px;">
+        <a href="{{url_for('static',filename='images/kmeans.jpg')}}" download>
+            <p style="font-size: 25px;text-align: center;font-weight: bolder;">
+            聚类分析 <span class="glyphicon glyphicon-save-file" aria-hidden="true" style="font-size: 0.9em;"></span>
+            </p>
+        </a>
+        <hr style="border-width: 5px;border: solid black;">
+        <img src="{{url_for('static',filename='images/kmeans.jpg')}}" alt="Image" width="500px" height="500px">
+    </div>    
+        
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>      
+    
+</body>
+</html>

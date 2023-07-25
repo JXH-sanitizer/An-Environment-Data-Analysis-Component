@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>更新</title>
+    <style>
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            font-size: 16px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="search"] {
+            flex: 1;
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        .btn-outline-success {
+            margin-left: 10px;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        table {
+            text-align: center;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin: 0 auto;
+        }
+
+        th,
+        td {
+            text-align: center;
+            padding: 5px;
+            border: 1px solid black;
+            width: 175px;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: lightgrey;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            padding: 8px 16px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">导航</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">主页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">简介</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            上传数据或文件
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{ url_for('file.upload' ) }}">Excel表格上传</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('pol.register' ) }}">污染物登记</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">其他</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="请输入关键词" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">搜索</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    <div class="container text-center">
+        <form action="{{url_for('pol.update')}}" method="post">
+            <input type="hidden" name="id" value="{{pollutant.id}}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>CAS号</th>
+                        <th>污染物名称</th>
+                        <th>监测点位号</th>
+                        <th>单位</th>
+                        <th>浓度</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="text" name="CAS" value="{{pollutant.CAS}}" readonly style="background-color: rgba(167, 167, 167 , 0.5);">
+                        </td>
+                        <td>
+                            <input type="text" name="name" value="{{pollutant.pollutionname}}" readonly style="background-color: rgba(167, 167, 167 , 0.5);">
+                        </td>
+                        <td>
+                            <input type="text" name="location" value="{{pollutant.location}}">
+                        </td>
+                        <td>
+                            <select name="unit" id="">
+                                <option value="{{pollutant.unit}}">
+                                    原单位:{{pollutant.unit}}
+                                </option>
+                                <option value="无">无</option>
+                                <option value="g/L">g/L</option>
+                                <option value="mg/L">mg/L</option>
+                                <option value="μg/L">μg/L</option>
+                                <option value="ng/L">ng/L</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" name="conc" value="{{pollutant.conc}}">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <p><input type="submit" value="确认更新"></p>
+        </form>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
